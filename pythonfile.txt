@@ -1,0 +1,14 @@
+import pandas as pd
+ds=pd.read_csv('cr.csv')
+ds.head()
+ds['label'].unique()
+from sklearn.preprocessing import LabelEncoder
+le=LabelEncoder()
+inputs=le.fit_transform(ds['label'])
+target=ds['label']
+inputs1=ds.drop(['label'],axis='columns')
+inputs1.head()
+from sklearn import tree
+model=tree.DecisionTreeClassifier()
+model.fit(inputs1,target)
+model.predict([[90,42,43,20.879744,82.002744,6.502985,202.935536]])
